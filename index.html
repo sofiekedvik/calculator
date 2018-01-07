@@ -2,18 +2,21 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>counter wise</title>
-        <link rel="stylesheet" href="style.css">
+        <title>Calculate </title>
+        <link rel="stylesheet" href="src/style.css">
     </head>
     <body>
         <div class="container">
-            <h1>Counter Wise</h1>
-            <p>0</p>
+            <h1>Calculate</h1>
+
 
             <table>
                 <tbody>
                     <tr>
-                        <td>C</td>
+                        <td class="blue">C</td>
+                        <td class="number" colspan="3">
+                            0
+                        </td>
                     </tr>
                     <tr>
                         <td>7</td>
@@ -42,74 +45,6 @@
                 </tbody>
             </table>
         </div>
-        <script>
-            var result = document.getElementsByTagName('p')[0];
-            var oldValue = '';
-            var newValue = 0;
-            var firstValue = '';
-            var operator = '';
-
-            function isNumber(val) {
-                var reg = /^\d+$/;
-                return reg.test(val);
-            }
-
-            function calculate() {
-                var res = 0;
-
-                firstValue = parseFloat(firstValue);
-                newValue = parseFloat(newValue);
-
-                switch (operator) {
-                    case '*':
-                        res = firstValue * newValue;
-                        break;
-                    case '/':
-                        res = firstValue / newValue;
-                        break;
-                    case '+':
-                        res = firstValue + newValue;
-                        break;
-                    case '-':
-                        res = firstValue - newValue;
-                        break;
-                    case 'C':
-                        res = '';
-                        break;
-                    default: break;
-                }
-
-                result.innerHTML = res;
-                firstValue = '';
-                newValue = '';
-                oldValue = '';
-            }
-
-
-            function checkValue() {
-                var val = this.innerText;
-
-                if (isNumber(val)) {
-                    oldValue = String(oldValue) + String(val);
-                    newValue = oldValue;
-                    result.innerHTML = newValue;
-                } else {
-                    firstValue = newValue;
-                    oldValue = '';
-                    operator = val;
-                }
-            }
-
-            var td = document.getElementsByTagName('td');
-
-            for (var i = 0; i <td.length; i++){
-                if (td[i].getAttribute('class') === 'equals') {
-                    td[i].addEventListener('click', calculate );
-                } else {
-                    td[i].addEventListener('click', checkValue );
-                }
-            }
-
-        </script>
+        <script type="text/javascript" src="src/calculator.js"></script>
     </body>
 </html>
